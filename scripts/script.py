@@ -33,5 +33,11 @@ class Clean_df:
                 df[i].fillna(df[i].mean(), inplace=True) 
         bfill_missing(df, 'Start')
         ffill_missing(df, 'End')
+        
+    def show_outliers(self, df):
+    df_numeric = df.select_dtypes(include='float')
+    for i in df_numeric.columns:
+        sns.boxplot(data=df_numeric, x=df_numeric[i])
+        plt.show()
     
     
